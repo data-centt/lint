@@ -206,3 +206,5 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+lint/Scripts/doesitcache.exe
+lint/Scripts/fixup_firestore_admin_v1_keywords.py
