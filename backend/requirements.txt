@@ -1,3 +1,6 @@
+flask
+firebase-admin
 openai
-math
-
+PyPDF2
+python-docx
+python-dotenv
