@@ -14,3 +14,7 @@ if not FIREBASE_STORAGE_BUCKET:
 
 if not os.path.exists(FIREBASE_CREDENTIALS):
     raise RuntimeError(f"Service account file not found: {FIREBASE_CREDENTIALS}")
+
+if not firebase_admin._apps:
+    cred = credentials.Certificate(FIREBASE_CREDENTIALS)
+    firebase_admin.initialize_app(cred, {"storageBucket": FIREBASE_STORAGE_BUCKET})
