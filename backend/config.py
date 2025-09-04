@@ -12,4 +12,5 @@ FIREBASE_STORAGE_BUCKET = os.getenv("FIREBASE_STORAGE_BUCKET")
 if not FIREBASE_STORAGE_BUCKET:
     raise RuntimeError("Missing FIREBASE_STORAGE_BUCKET in .env")
 
-
+if not os.path.exists(FIREBASE_CREDENTIALS):
+    raise RuntimeError(f"Service account file not found: {FIREBASE_CREDENTIALS}")
