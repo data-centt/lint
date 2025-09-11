@@ -13,3 +13,16 @@ This file handles the imports and outputs of the files and automatically pick th
 upload.
 """
 
+def _parse_pdf(path: str) -> str:
+    """Extract text from a PDF file."""
+    reader = PdfReader(path)
+    texts = []
+    for page in reader.pages:
+        try:
+            t = page.extract_text() or ""
+            if t.strip():
+                texts.append(t)
+        except Exception:
+            # Skip unreadable pages but continue
+            continue
+    return "\n".join(texts).strip()
