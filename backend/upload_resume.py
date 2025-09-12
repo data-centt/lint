@@ -75,3 +75,5 @@ def upload_resume_file(local_path: str, user_id: str) -> Dict:
         "created_at": firestore.SERVER_TIMESTAMP,
     })
     
+    snap = doc_ref[1].get()
+    
