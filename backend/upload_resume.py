@@ -61,5 +61,6 @@ def upload_resume_file(local_path: str, user_id: str) -> Dict:
         blob.upload_from_filename(local_path)
         # make public for now
         blob.make_public()
-    
+    except GoogleCloudError as e:
+        raise RuntimeError(f"Upload to Storage failed: {e}")
     
