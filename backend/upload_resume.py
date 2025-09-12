@@ -79,3 +79,15 @@ def upload_resume_file(local_path: str, user_id: str) -> Dict:
     data = snap.to_dict() or {}
     data["id"] = snap.id
     return data
+
+def get_latest_resume(user_id: str) -> Optional[Dict]:
+    """
+    Fetch the most recently uploaded resume document for a given user.
+    Returns None if the user has no resumes.
+    """
+    q = (
+        db.collection("resumes")
+          .where("user_id", "==", user_id)
+          .order_by("created_at", direction=firestore.Query.DESCENDING)
+          .limit(1)
+    )
