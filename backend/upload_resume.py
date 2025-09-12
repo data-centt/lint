@@ -26,3 +26,8 @@ def _parse_pdf(path: str) -> str:
             # Skip unreadable pages but continue
             continue
     return "\n".join(texts).strip()
+
+def _parse_docx(path: str) -> str:
+    """Extract text from a DOCX file."""
+    doc = DocxDocument(path)
+    return "\n".join(p.text for p in doc.paragraphs).strip()
