@@ -56,4 +56,10 @@ def upload_resume_file(local_path: str, user_id: str) -> Dict:
     file_name = f"{uuid.uuid4().hex}_{os.path.basename(local_path)}"
 
     # Path in your bucket (organize per-user)
+    blob = bucket.blob(f"resumes/{user_id}/{file_name}")
+    try:
+        blob.upload_from_filename(local_path)
+        # make public for now
+        blob.make_public()
+    
     
