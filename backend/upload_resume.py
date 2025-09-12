@@ -43,3 +43,13 @@ def parse_resume(local_path: str) -> str:
     if ext == ".docx":
         return _parse_docx(local_path)
     raise ValueError("Unsupported file type. Please upload .pdf or .docx")
+
+def upload_resume_file(local_path: str, user_id: str) -> Dict:
+    """
+    Upload the original resume to Firebase Storage,
+    parse text, and save metadata + parsed text in Firestore.
+
+    Returns a dict containing the Firestore document fields plus 'id'.
+    """
+    if not os.path.exists(local_path):
+        raise FileNotFoundError(f"File not found: {local_path}")
