@@ -76,4 +76,5 @@ def upload_resume_file(local_path: str, user_id: str) -> Dict:
     })
     
     snap = doc_ref[1].get()
+    data = snap.to_dict() or {}
     
