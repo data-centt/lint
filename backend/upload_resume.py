@@ -91,3 +91,7 @@ def get_latest_resume(user_id: str) -> Optional[Dict]:
           .order_by("created_at", direction=firestore.Query.DESCENDING)
           .limit(1)
     )
+
+    docs = list(q.stream())
+    if not docs:
+        return None
