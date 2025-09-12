@@ -97,4 +97,5 @@ def get_latest_resume(user_id: str) -> Optional[Dict]:
         return None
     
     d = docs[0]
+    data = d.to_dict() or {}
     
