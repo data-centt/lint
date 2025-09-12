@@ -5,7 +5,7 @@ from PyPDF2 import PdfReader
 from docx import Document as DocxDocument
 from firebase_admin import firestore
 from google.cloud.exceptions import GoogleCloudError
-from config import db, bucket
+from .config import db, bucket
 
 
 """
