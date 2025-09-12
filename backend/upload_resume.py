@@ -53,3 +53,7 @@ def upload_resume_file(local_path: str, user_id: str) -> Dict:
     """
     if not os.path.exists(local_path):
         raise FileNotFoundError(f"File not found: {local_path}")
+    file_name = f"{uuid.uuid4().hex}_{os.path.basename(local_path)}"
+
+    # Path in your bucket (organize per-user)
+    
