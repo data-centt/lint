@@ -64,3 +64,14 @@ def upload_resume_file(local_path: str, user_id: str) -> Dict:
     except GoogleCloudError as e:
         raise RuntimeError(f"Upload to Storage failed: {e}")
     
+    parsed_text = parse_resume(local_path)
+
+    # Write Firestore doc with metadata + parsed text
+    doc_ref = db.collection("resumes").add({
+        "user_id": user_id,
+        "file_name": file_name,
+        "download_url": blob.public_url,   # consider signed URLs in production
+        "parsed_text": parsed_text,
+        "created_at": firestore.SERVER_TIMESTAMP,
+    })
+    
