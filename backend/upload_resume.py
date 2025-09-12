@@ -31,3 +31,15 @@ def _parse_docx(path: str) -> str:
     """Extract text from a DOCX file."""
     doc = DocxDocument(path)
     return "\n".join(p.text for p in doc.paragraphs).strip()
+
+def parse_resume(local_path: str) -> str:
+    """
+    Parse a resume file (.pdf or .docx) and return extracted text.
+    Raises ValueError for unsupported types.
+    """
+    ext = os.path.splitext(local_path)[1].lower()
+    if ext == ".pdf":
+        return _parse_pdf(local_path)
+    if ext == ".docx":
+        return _parse_docx(local_path)
+    raise ValueError("Unsupported file type. Please upload .pdf or .docx")
