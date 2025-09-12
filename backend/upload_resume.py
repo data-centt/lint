@@ -95,3 +95,6 @@ def get_latest_resume(user_id: str) -> Optional[Dict]:
     docs = list(q.stream())
     if not docs:
         return None
+    
+    d = docs[0]
+    
