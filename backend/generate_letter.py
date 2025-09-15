@@ -39,6 +39,7 @@ def generate_cover_letter(job_description:str, resume_text:str, model:str = MODE
     (iii) Confident and clear tone
     (iv) Do not fabricate experience
     (v) Return plain text only
+    (vi) Avoid obvious AI words and signs like 'honed', 'robust', em-dash
     """
     response = client.chat.completions.create(
         model= model,
