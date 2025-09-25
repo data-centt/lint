@@ -11,3 +11,5 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import HTTPException
+
+from .auth import verify_id_token
